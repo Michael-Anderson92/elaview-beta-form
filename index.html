@@ -175,7 +175,7 @@
                 <strong>Thank you!</strong> Your beta access request has been submitted. We'll be in touch soon!
             </div>
 
-            <form id="betaForm">
+            <form id="betaForm" action="https://formspree.io/f/mldnzwnq" method="POST">
                 <div class="form-group">
                     <label for="fullName">Full Name <span class="required">*</span></label>
                     <input type="text" id="fullName" name="fullName" required>
@@ -276,7 +276,7 @@
     </div>
 
     <script>
-        document.getElementById('betaForm').addEventListener('submit', function(e) {
+        document.getElementById('betaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Simple form validation
@@ -293,32 +293,46 @@
             });
             
             if (isValid) {
-                // Collect form data
-                const formData = new FormData(this);
-                const data = {};
+                // Show loading state
+                const submitBtn = this.querySelector('.submit-btn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
                 
-                // Handle regular fields
-                for (let [key, value] of formData.entries()) {
-                    if (key === 'testInterests') {
-                        if (!data[key]) data[key] = [];
-                        data[key].push(value);
-                    } else {
-                        data[key] = value;
+                try {
+                    // Submit to Formspree
+                    const formData = new FormData(this);
+                    
+                    // Handle checkboxes for better email formatting
+                    const checkboxes = this.querySelectorAll('input[name="testInterests"]:checked');
+                    const testInterests = Array.from(checkboxes).map(cb => cb.value);
+                    
+                    // Remove individual checkbox entries and add as comma-separated list
+                    formData.delete('testInterests');
+                    if (testInterests.length > 0) {
+                        formData.append('testInterests', testInterests.join(', '));
                     }
+                    
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Show success message
+                        document.getElementById('successMessage').style.display = 'block';
+                        this.style.display = 'none';
+                    } else {
+                        throw new Error('Form submission failed');
+                    }
+                } catch (error) {
+                    alert('Sorry, there was an error submitting the form. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
                 }
-                
-                // Handle checkboxes specifically
-                const checkboxes = this.querySelectorAll('input[name="testInterests"]:checked');
-                data.testInterests = Array.from(checkboxes).map(cb => cb.value);
-                
-                console.log('Beta signup data:', data);
-                
-                // Show success message
-                document.getElementById('successMessage').style.display = 'block';
-                this.style.display = 'none';
-                
-                // Here you would typically send the data to your backend
-                // fetch('/api/beta-signup', { method: 'POST', body: JSON.stringify(data) })
             }
         });
     </script>
