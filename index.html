@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elaview Beta Access - Join the Revolution</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .form-container {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.95em;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+            margin-top: 3px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Elaview Beta Access</h1>
+            <p>Join the revolution in advertising space discovery. Get early access to the platform that's transforming how advertisers and space owners connect.</p>
+        </div>
+
+        <div class="form-container">
+            <div class="info-box">
+                <strong>What to expect:</strong> Beta access includes early platform access, direct feedback channels with our team, and the opportunity to shape the future of advertising space marketplaces.
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <strong>Thank you!</strong> Your beta access request has been submitted. We'll be in touch soon!
+            </div>
+
+            <form id="betaForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company Name <span class="required">*</span></label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="jobTitle">Job Title <span class="required">*</span></label>
+                    <input type="text" id="jobTitle" name="jobTitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="companySize">Company Size</label>
+                    <select id="companySize" name="companySize">
+                        <option value="">Select company size</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-1000">201-1000 employees</option>
+                        <option value="1000+">1000+ employees</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What best describes your primary interest? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="advertiser" name="primaryInterest" value="advertiser" required>
+                            <label for="advertiser">I'm an advertiser looking for spaces</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="spaceOwner" name="primaryInterest" value="spaceOwner" required>
+                            <label for="spaceOwner">I own advertising spaces</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="both" name="primaryInterest" value="both" required>
+                            <label for="both">Both</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="currentChallenges">What are your biggest challenges with advertising space discovery/management?</label>
+                    <textarea id="currentChallenges" name="currentChallenges" placeholder="Tell us about your current pain points..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="heardAbout">How did you hear about Elaview?</label>
+                    <select id="heardAbout" name="heardAbout">
+                        <option value="">Select one</option>
+                        <option value="linkedin">LinkedIn</option>
+                        <option value="word-of-mouth">Word of mouth</option>
+                        <option value="social-media">Social media</option>
+                        <option value="industry-event">Industry event</option>
+                        <option value="news-article">News/Article</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>What would you most like to test during the beta? (Check all that apply)</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="aiScoring" name="testInterests" value="aiScoring">
+                            <label for="aiScoring">AI-powered visibility scoring</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="searchDiscovery" name="testInterests" value="searchDiscovery">
+                            <label for="searchDiscovery">Space search and discovery</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="listingManagement" name="testInterests" value="listingManagement">
+                            <label for="listingManagement">Space listing and management</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="booking" name="testInterests" value="booking">
+                            <label for="booking">Booking and payment system</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="analytics" name="testInterests" value="analytics">
+                            <label for="analytics">Analytics and reporting</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Join Elaview Beta 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('betaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const requiredFields = this.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#e74c3c';
+                } else {
+                    field.style.borderColor = '#e1e8ed';
+                }
+            });
+            
+            if (isValid) {
+                // Collect form data
+                const formData = new FormData(this);
+                const data = {};
+                
+                // Handle regular fields
+                for (let [key, value] of formData.entries()) {
+                    if (key === 'testInterests') {
+                        if (!data[key]) data[key] = [];
+                        data[key].push(value);
+                    } else {
+                        data[key] = value;
+                    }
+                }
+                
+                // Handle checkboxes specifically
+                const checkboxes = this.querySelectorAll('input[name="testInterests"]:checked');
+                data.testInterests = Array.from(checkboxes).map(cb => cb.value);
+                
+                console.log('Beta signup data:', data);
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                this.style.display = 'none';
+                
+                // Here you would typically send the data to your backend
+                // fetch('/api/beta-signup', { method: 'POST', body: JSON.stringify(data) })
+            }
+        });
+    </script>
+</body>
+</html>
